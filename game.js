@@ -11,7 +11,6 @@ window.onload = function() {
     game.fps = 15;
     
     game.preload('images/maps/map1.gif', charSprite);
-    game.preload('cave.mp3');
     
     
     game.onload = function() {
