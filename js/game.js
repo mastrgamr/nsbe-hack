@@ -4,11 +4,11 @@ var currLvl = 0;
 enchant();
 var charSprite = 'images/sprites/toast.gif';
 var mapSprite = 'images/maps/map1.gif';
-var goatSprite = 'images/maps/maps.gif';
+var goatSprite = 'images/sprites/goat.gif';
 window.onload = function () {
   var game = new Game(320, 320);
   game.fps = 15;
-  game.preload(mapSprite, charSprite);
+  game.preload(mapSprite, charSprite, goatSprite);
   game.onload = function () {
     var map = new Map(16, 16);
     map.image = game.assets[mapSprite];
@@ -354,10 +354,90 @@ window.onload = function () {
         }
       }
     });
-    
+	  /* enemy*/
+     var enemy = new Sprite(32, 32);
+    enemy.x = 6 * 16 - 8;
+    enemy.y = 10 * 16;
+    var imag = new Surface(96, 128);
+    imag.draw(game.assets[goatSprite], 0, 0, 96, 128, 0, 0, 96, 128);
+    enemy.image = imag;
+    enemy.isMoving = false;
+    enemy.direction = 0;
+    enemy.walk = 1;
+    enemy.addEventListener('enterframe', function () {
+      this.frame = this.direction * 3 + this.walk;
+      if (this.isMoving) {
+        this.moveBy(this.vx, this.vy);
+        // Used to help debug where the player is to help come
+        // up with scene transition
+        console.log(enemy);
+        
+        if ((enemy._x == 56 || enemy._x == 72) && enemy._y == 128 && currLvl == 0) {
+          // alert("welcome to my home, dont touch that~");
+          console.log("Hit the stairs. change the scene");
+          paused = true;
+          firstDes();
+          //                        map.loadData(map2DataBG, map2DataFG);
+          //                        foregroundMap.loadData(fore2Data);
+          //                        map.collisionData = map2.collisionData;
+        }
+        if (!(game.frame % 3)) {
+          this.walk++;
+          this.walk %= 3;
+        }
+        if ((this.vx && (this.x - 8) % 16 == 0) || (this.vy && this.y % 16 == 0)) {
+          this.isMoving = false;
+          this.walk = 1;
+        }
+      }
+      else {
+        this.vx = this.vy = 0;
+        if (game.input.left && !paused) {
+          this.direction = 1;
+          this.vx = -4;
+        }
+        else if (game.input.right && !paused) {
+          this.direction = 2;
+          this.vx = 4;
+        }
+        else if (game.input.up && !paused) {
+          this.direction = 3;
+          this.vy = -4;
+        }
+        else if (game.input.down && !paused) {
+          this.direction = 0;
+          this.vy = 4;
+        }
+        if (this.vx || this.vy) {
+          var x = this.x + (this.vx ? this.vx / Math.abs(this.vx) * 16 : 0) + 16;
+          var y = this.y + (this.vy ? this.vy / Math.abs(this.vy) * 16 : 0) + 16;
+          if (0 <= x && x < map.width && 0 <= y && y < map.height && !map.hitTest(x, y)) {
+            this.isMoving = true;
+            arguments.callee.call(this);
+          }
+        }
+        if (paused && currLvl == 0) {
+          if (game.input.one) {
+            document.getElementById('terminal').innerHTML += "<p>You are not worthy.</p>";
+            alert('BALLZ');
+            firstDes();
+          }
+          if (game.input.two) {
+            document.getElementById('terminal').innerHTML = "<p>You chose 2. <br />You are quite skilled.</p>";
+            map.loadData(map2DataBG, map2DataFG);
+            foregroundMap.loadData(fore2Data);
+            map.collisionData = map2.collisionData;
+            currLvl++;
+            paused = false;
+          }
+        }
+      }
+    });
+   
     var stage = new Group();
     stage.addChild(map);
     stage.addChild(player);
+    stage.addChild(enemy);	  
     stage.addChild(foregroundMap);
     game.rootScene.addChild(stage);
     game.keybind(49, "one");
@@ -373,6 +453,7 @@ window.onload = function () {
     });
   };
 
+	/* Document JS */
   function firstDes() {
     document.getElementById('terminal').innerHTML += "<p>------------------------------</p>";
     document.getElement
