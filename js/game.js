@@ -4,13 +4,14 @@ var currLvl = 0;
 enchant();
 var charSprite = 'images/sprites/toast.gif';
 var mapSprite = 'images/maps/map1.gif';
+var goatSprite = 'images/maps/maps.gif';
 window.onload = function () {
   var game = new Game(320, 320);
   game.fps = 15;
-  game.preload('images/maps/map1.gif', charSprite);
+  game.preload(mapSprite, charSprite);
   game.onload = function () {
     var map = new Map(16, 16);
-    map.image = game.assets['images/maps/map1.gif'];
+    map.image = game.assets[mapSprite];
     map.loadData([
             [322, 322, 322, 322, 322, 322, 224, 225, 225, 225, 225, 225, 167, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205]
             , [322, 322, 322, 322, 322, 322, 322, 322, 322, 322, 322, 322, 224, 225, 225, 225, 225, 225, 167, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205]
@@ -107,7 +108,7 @@ window.onload = function () {
             , [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ];
     var foregroundMap = new Map(16, 16);
-    foregroundMap.image = game.assets['images/maps/map1.gif'];
+    foregroundMap.image = game.assets[mapSprite];
     foregroundMap.loadData([
             [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
             , [-1, 461, 462, -1, 461, 462, -1, 461, 462, -1, 461, 462, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
@@ -141,7 +142,7 @@ window.onload = function () {
             , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
         ]);
     var map2 = new Map(16, 16);
-    map2.image = game.assets['images/maps/map1.gif'];
+    map2.image = game.assets[mapSprite];
     var map2DataBG = [
           [55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55]
           , [55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55]
@@ -240,7 +241,7 @@ window.onload = function () {
           , [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ];
     var foregroundMap2 = new Map(16, 16);
-    foregroundMap2.image = game.assets['images/maps/map1.gif'];
+    foregroundMap2.image = game.assets[mapSprite];
     var fore2Data = [
           [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
