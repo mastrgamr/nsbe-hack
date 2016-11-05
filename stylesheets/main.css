@@ -1,22 +1,42 @@
+/* Custom Fonts start */
 
+@font-face{
+	font-family: zero;
+	src: url(../fonts/zero-velocity-brk/zerovelo.ttf);
+	font-weight: bold;
+}
+
+@font-face{
+	font-family: zig;
+	src: url(../fonts/zig/zig_____.ttf);
+	font-weight: bold;
+}
+
+
+@font-face{
+	font-family: personal;
+	src: url(../fonts/personal-computer/PERSONAL.TTF);
+}
+
+/* Custom Fonts end */
 html{
+	--dialog-bg: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqkj0511SWJPARxCpO-FfR5LS4VTpajMzfYxRm3zmFXM3A9zoU') center center;
 	height: 100%;
 }
 
 
 body{
-height: 100%;
+	height: 100%;
 	margin: 0;
 }
 
-h1{
-	text-align: center;
-}
 #enchant-stage{
 	border: 1px inset black;
 }
 
 #enchant-dialog{
+	background: var(--dialog-bg);
+	background-size: contain;
 	height: 100%;
 	width: 49%;
 	float: right;
@@ -24,7 +44,11 @@ h1{
 
 }
 
+h1{
+	text-align:center;
+	font-family: 'zero';
 
+}
 .dialog-wrapper{
 	margin-top: 40px;
 	width: 100%;
@@ -33,6 +57,7 @@ h1{
 }
 
 .dialog{
+	font-family: 'zig';
 	margin: 30px;
 	height: 300px;
 	border: 6px inset black;
@@ -51,6 +76,7 @@ h1{
 }
 
 .hints{
+	font-family: 'personal';
 	display: flex;
 	align-items: center;
 	justify-content: center;
