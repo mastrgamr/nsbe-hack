@@ -688,8 +688,10 @@ window.onload = function () {
   1 - userSkill = 0;<br/>\
   2 - userSkill = 10;<br/>\
   3 - userSkill = 100;<br/></p>";
-	}
-	game.start();
+  }
+            document.getElementById('facts').innerHTML = "<p>Variables in programming are like \"buckets\" or \
+                      \"envelopes\". This is where information can be attained and referenced.</p>";
+  game.start();
 };
 
 function secondDes() {
@@ -700,6 +702,8 @@ function secondDes() {
             if(memoryValue < 0){<br />    room = right; <br /> \
             } else if (memoryValue < 4096) { <br />    room = left; <br /> \
             } else { <br />    room = straight; <br /> } </p>";
+            document.getElementById('facts').innerHTML = "<p>If-Statements control the flow of the program. They are the decision \
+                      points on which your app will progress.</p>";
 }
 $(document).ready(function () {
 
