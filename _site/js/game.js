@@ -5,6 +5,7 @@ enchant();
 var charSprite = 'images/sprites/toast.gif';
 var mapSprite = 'images/maps/map1.gif';
 var goatSprite = 'images/sprites/goat.gif';
+
 window.onload = function () {
   var game = new Game(320, 320);
   game.fps = 15;
@@ -356,8 +357,8 @@ window.onload = function () {
     });
 	  /* enemy*/
      var enemy = new Sprite(32, 32);
-    enemy.x = 6 * 16 - 8;
-    enemy.y = 10 * 16;
+    enemy.x = 200;
+    enemy.y = 200;
     var imag = new Surface(96, 128);
     imag.draw(game.assets[goatSprite], 0, 0, 96, 128, 0, 0, 96, 128);
     enemy.image = imag;
@@ -370,18 +371,7 @@ window.onload = function () {
         this.moveBy(this.vx, this.vy);
         // Used to help debug where the player is to help come
         // up with scene transition
-        console.log(enemy);
-        
-        if ((enemy._x == 56 || enemy._x == 72) && enemy._y == 128 && currLvl == 0) {
-          // alert("welcome to my home, dont touch that~");
-          console.log("Hit the stairs. change the scene");
-          paused = true;
-          firstDes();
-          //                        map.loadData(map2DataBG, map2DataFG);
-          //                        foregroundMap.loadData(fore2Data);
-          //                        map.collisionData = map2.collisionData;
-        }
-        if (!(game.frame % 3)) {
+               if (!(game.frame % 3)) {
           this.walk++;
           this.walk %= 3;
         }
@@ -416,21 +406,7 @@ window.onload = function () {
             arguments.callee.call(this);
           }
         }
-        if (paused && currLvl == 0) {
-          if (game.input.one) {
-            document.getElementById('terminal').innerHTML += "<p>You are not worthy.</p>";
-            alert('BALLZ');
-            firstDes();
-          }
-          if (game.input.two) {
-            document.getElementById('terminal').innerHTML = "<p>You chose 2. <br />You are quite skilled.</p>";
-            map.loadData(map2DataBG, map2DataFG);
-            foregroundMap.loadData(fore2Data);
-            map.collisionData = map2.collisionData;
-            currLvl++;
-            paused = false;
-          }
-        }
+       
       }
     });
    
