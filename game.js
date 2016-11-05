@@ -349,11 +349,6 @@ window.onload = function() {
         stage.addChild(foregroundMap);
         game.rootScene.addChild(stage);
 
-        var pad = new Pad();
-        pad.x = 0;
-        pad.y = 220;
-        game.rootScene.addChild(pad);
-
         game.rootScene.addEventListener('enterframe', function(e) {
             var x = Math.min((game.width  - 16) / 2 - player.x, 0);
             var y = Math.min((game.height - 16) / 2 - player.y, 0);
