@@ -1,4 +1,5 @@
 var paused = false;
+
 enchant();
 var charSprite = 'images/sprites/toast.gif';
 var mapSprite = 'images/maps/map1.gif';
@@ -271,6 +272,7 @@ window.onload = function () {
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
         ];
+    
     //        foregroundMap2.loadData();
     var player = new Sprite(32, 32);
     player.x = 6 * 16 - 8;
