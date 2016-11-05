@@ -198,17 +198,76 @@ window.onload = function() {
         });
 /* End of enemy sprites */
 
+<<<<<<< HEAD:game.js
+        var enemy = new Sprite(32, 32);
+        enemy.x = 6 * 16 + 8;
+        enemy.y = 10 * 16 - 16;
+        var imag = new Surface(96, 128);
+        imag.draw(game.assets[enemy1], 0, 0, 96, 128, 0, 0, 96, 128);
+        enemy.image = imag;
+=======
+                // Used to help debug where the player is to help come
+                // up with scene transition
+                 console.log(player);
+             		if(player._x == 56 && player._y == 48){
+                      // alert("welcome to my home, dont touch that~");
+                      console.log("Hit the stairs. change the scene");
+>>>>>>> 7b395cbb81544d7df03821020aa87573944792db:js/game.js
+
+        enemy.isMoving = false;
+        enemy.direction = 0;
+        enemy.walk = 0;
+        enemy.addEventListener('enterframe', function() {
+            this.frame = this.direction * 3 + this.walk;
+
+	  console.log(player);
+		
+			
+            if (this.isMoving) {
+                this.moveBy(this.vx, this.vy);
+ 		if(player._x == 104 && player._y == 112){
+			alert("welcome to my home, dont touch that~");
+		}
+                if (!(game.frame % 3)) {
+                    this.walk++;
+                    this.walk %= 3;
+                }
+                if ((this.vx && (this.x-8) % 16 == 0) || (this.vy && this.y % 16 == 0)) {
+                    this.isMoving = false;
+                    this.walk = 1;
+                }
+            } else {
+                this.vx = this.vy = 0;
+                if (game.input.left) {
+                    this.direction = 1;
+                    this.vx = -4;
+                } else if (game.input.right) {
+                    this.direction = 2;
+                    this.vx = 4;
+                } else if (game.input.up) {
+                    this.direction = 3;
+                    this.vy = -4;
+                } else if (game.input.down) {
+                    this.direction = 0;
+                    this.vy = 4;
+                }
+                if (this.vx || this.vy) {
+                    var x = this.x + (this.vx ? this.vx / Math.abs(this.vx) * 16 : 0) + 16;
+                    var y = this.y + (this.vy ? this.vy / Math.abs(this.vy) * 16 : 0) + 16;
+                    if (0 <= x && x < map.width && 0 <= y && y < map.height && !map.hitTest(x, y)) {
+                        this.isMoving = true;
+                        arguments.callee.call(this);
+                    }
+                }
+            }
+        });
+
         var stage = new Group();
         stage.addChild(map);
         stage.addChild(player);
 //	stage.addChild(enemy);
         stage.addChild(foregroundMap);
         game.rootScene.addChild(stage);
-
-        var pad = new Pad();
-        pad.x = 0;
-        pad.y = 220;
-        game.rootScene.addChild(pad);
 
         game.rootScene.addEventListener('enterframe', function(e) {
             var x = Math.min((game.width  - 16) / 2 - player.x, 0);

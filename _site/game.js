@@ -198,61 +198,6 @@ window.onload = function() {
         });
 /* End of enemy sprites */
 
-        var enemy = new Sprite(32, 32);
-        enemy.x = 6 * 16 + 8;
-        enemy.y = 10 * 16 - 16;
-        var imag = new Surface(96, 128);
-        imag.draw(game.assets[enemy1], 0, 0, 96, 128, 0, 0, 96, 128);
-        enemy.image = imag;
-
-        enemy.isMoving = false;
-        enemy.direction = 0;
-        enemy.walk = 0;
-        enemy.addEventListener('enterframe', function() {
-            this.frame = this.direction * 3 + this.walk;
-
-	  console.log(player);
-		
-			
-            if (this.isMoving) {
-                this.moveBy(this.vx, this.vy);
- 		if(player._x == 104 && player._y == 112){
-			alert("welcome to my home, dont touch that~");
-		}
-                if (!(game.frame % 3)) {
-                    this.walk++;
-                    this.walk %= 3;
-                }
-                if ((this.vx && (this.x-8) % 16 == 0) || (this.vy && this.y % 16 == 0)) {
-                    this.isMoving = false;
-                    this.walk = 1;
-                }
-            } else {
-                this.vx = this.vy = 0;
-                if (game.input.left) {
-                    this.direction = 1;
-                    this.vx = -4;
-                } else if (game.input.right) {
-                    this.direction = 2;
-                    this.vx = 4;
-                } else if (game.input.up) {
-                    this.direction = 3;
-                    this.vy = -4;
-                } else if (game.input.down) {
-                    this.direction = 0;
-                    this.vy = 4;
-                }
-                if (this.vx || this.vy) {
-                    var x = this.x + (this.vx ? this.vx / Math.abs(this.vx) * 16 : 0) + 16;
-                    var y = this.y + (this.vy ? this.vy / Math.abs(this.vy) * 16 : 0) + 16;
-                    if (0 <= x && x < map.width && 0 <= y && y < map.height && !map.hitTest(x, y)) {
-                        this.isMoving = true;
-                        arguments.callee.call(this);
-                    }
-                }
-            }
-        });
-
         var stage = new Group();
         stage.addChild(map);
         stage.addChild(player);
