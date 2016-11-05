@@ -3,13 +3,15 @@ var currLvl = 0;
 enchant();
 var charSprite = 'images/sprites/toast.gif';
 var mapSprite = 'images/maps/map1.gif';
+var goatSprite = 'images/sprites/goat.gif';
+
 window.onload = function () {
   var game = new Game(320, 320);
   game.fps = 15;
-  game.preload('images/maps/map1.gif', charSprite);
+  game.preload(mapSprite, charSprite, goatSprite);
   game.onload = function () {
     var map = new Map(16, 16);
-    map.image = game.assets['images/maps/map1.gif'];
+    map.image = game.assets[mapSprite];
     map.loadData([
             [322, 322, 322, 322, 322, 322, 224, 225, 225, 225, 225, 225, 167, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205]
             , [322, 322, 322, 322, 322, 322, 322, 322, 322, 322, 322, 322, 224, 225, 225, 225, 225, 225, 167, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205, 205]
@@ -106,7 +108,7 @@ window.onload = function () {
             , [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         ];
     var foregroundMap = new Map(16, 16);
-    foregroundMap.image = game.assets['images/maps/map1.gif'];
+    foregroundMap.image = game.assets[mapSprite];
     foregroundMap.loadData([
             [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
             , [-1, 461, 462, -1, 461, 462, -1, 461, 462, -1, 461, 462, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
@@ -140,7 +142,7 @@ window.onload = function () {
             , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
         ]);
     var map2 = new Map(16, 16);
-    map2.image = game.assets['images/maps/map1.gif'];
+    map2.image = game.assets[mapSprite];
     var map2DataBG = [
           [55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55]
           , [55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55]
@@ -239,7 +241,7 @@ window.onload = function () {
           , [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ];
     var foregroundMap2 = new Map(16, 16);
-    foregroundMap2.image = game.assets['images/maps/map1.gif'];
+    foregroundMap2.image = game.assets[mapSprite];
     var fore2Data = [
           [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
@@ -401,9 +403,67 @@ window.onload = function () {
         }
       }
     });
+    
+	  /* enemy*/
+     var enemy = new Sprite(32, 32);
+    enemy.x = 200;
+    enemy.y = 200;
+    var imag = new Surface(96, 128);
+    imag.draw(game.assets[goatSprite], 0, 0, 96, 128, 0, 0, 96, 128);
+    enemy.image = imag;
+    enemy.isMoving = false;
+    enemy.direction = 0;
+    enemy.walk = 1;
+    enemy.addEventListener('enterframe', function () {    
+      this.frame = this.direction * 3 + this.walk;
+	    /*
+      if (true) {
+        this.moveBy(-1, 1);
+        // Used to help debug where the player is to help come
+        // up with scene transition
+               if (!(game.frame % 3)) {
+          this.walk++;
+          this.walk %= 3;
+        }
+        if ((this.vx && (this.x - 8) % 16 == 0) || (this.vy && this.y % 16 == 0)) {
+          this.isMoving = false;
+          this.walk = 1;
+        }
+      }
+      else {
+        this.vx = this.vy = 1;
+        if (game.input.left && !paused) {
+          this.direction = 1;
+          this.vx = -4;
+        }
+        else if (game.input.right && !paused) {
+          this.direction = 2;
+          this.vx = 4;
+        }
+        else if (game.input.up && !paused) {
+          this.direction = 3;
+          this.vy = -4;
+        }
+        else if (game.input.down && !paused) {
+          this.direction = 0;
+          this.vy = 4;
+        }
+        if (this.vx || this.vy) {
+          var x = this.x + (this.vx ? this.vx / Math.abs(this.vx) * 16 : 0) + 16;
+          var y = this.y + (this.vy ? this.vy / Math.abs(this.vy) * 16 : 0) + 16;
+          if (0 <= x && x < map.width && 0 <= y && y < map.height && !map.hitTest(x, y)) {
+            this.isMoving = true;
+            arguments.callee.call(this);
+          }
+        }
+       
+      }*/
+    });
+   
     var stage = new Group();
     stage.addChild(map);
     stage.addChild(player);
+    stage.addChild(enemy);	  
     stage.addChild(foregroundMap);
     game.rootScene.addChild(stage);
     game.keybind(49, "one");
@@ -419,6 +479,7 @@ window.onload = function () {
     });
   };
 
+	/* Document JS */
   function firstDes() {
     document.getElementById('terminal').innerHTML += "<p>------------------------------</p>";
     document.getElement
