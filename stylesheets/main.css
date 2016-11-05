@@ -1,5 +1,4 @@
 /* Custom Fonts start */
-
 @font-face{
 	font-family: zero;
 	src: url(../fonts/zero-velocity-brk/zerovelo.ttf);
@@ -12,7 +11,6 @@
 	font-weight: bold;
 }
 
-
 @font-face{
 	font-family: mechanization;
 	src: url(../fonts/mechanization/Mechanization.ttf);
@@ -24,13 +22,9 @@ html{
 	height: 100%;
 }
 
-
 body{
 	height: 100%;
 	margin: 0;
-}
-
-#enchant-stage{
 }
 
 #enchant-dialog{
@@ -39,25 +33,23 @@ body{
 	height: 100%;
 	width: 50%;
 	float: right;
-
 }
 
 h1{
 	text-align:center;
 	font-family: 'zero';
-
 }
+
 .dialog-wrapper{
 	margin-top: 50px;
 	width: 100%;
-
 }
 
 .dialog{
 	font-family: 'zig';
 	margin: 30px;
 	padding: 10px;
-	height: 300px;
+	height: 450px;
 	background: black;
 	color: green;
 }
@@ -67,25 +59,20 @@ h1{
 	padding: 10px;
 	align-items: center;
 	justify-content: center;
-
-
-
 }
-
 
 .hints{
 	display: flex;
 	background: rgba(0,0,0,0.6);
-	color: black;
-	height: 50px;
+	color: #f1f1f1;
+	height: 75px;
 	align-items: center;
 	justify-content: center;
-	margin: 50px;	
+	margin: 25px;	
 	text-align: center;
-	font-size: 25px;
-	font-family: 'Mechanization';
 	position: relative;
 }
+
 button{
 	font-family: 'zig';
 	margin: 10px;
