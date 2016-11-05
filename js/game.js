@@ -684,6 +684,8 @@ window.onload = function () {
   2 - userSkill = 10;<br/>\
   3 - userSkill = 100;<br/></p>";
   }
+            document.getElementById('facts').innerHTML = "<p>Variables in programming are like \"buckets\" or \
+                      \"envelopes\". This is where information can be attained and referenced.</p>";
   game.start();
 };
 
@@ -695,6 +697,8 @@ function secondDes() {
             if(memoryValue < 0){<br />    room = right; <br /> \
             } else if (memoryValue < 4096) { <br />    room = left; <br /> \
             } else { <br />    room = straight; <br /> } </p>";
+            document.getElementById('facts').innerHTML = "<p>If-Statements control the flow of the program. They are the decision \
+                      points on which your app will progress.</p>";
 }
 $(document).ready(function () {
   $('#terminal').html('<p>> You are the next greatest programmer of the world and you are here to rescue the memory that was stolen by the evil king Segmentation Fault.</p>');
