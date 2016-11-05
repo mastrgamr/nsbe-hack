@@ -299,7 +299,7 @@ window.onload = function() {
 
                 // Used to help debug where the player is to help come
                 // up with scene transition
-                // console.log(player);
+                 console.log(player);
              		if(player._x == 56 && player._y == 48){
                       // alert("welcome to my home, dont touch that~");
                       console.log("Hit the stairs. change the scene");
