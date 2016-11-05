@@ -1,5 +1,6 @@
 var paused = false;
 
+var currLvl = 0;
 enchant();
 var charSprite = 'images/sprites/toast.gif';
 var mapSprite = 'images/maps/map1.gif';
@@ -272,11 +273,7 @@ window.onload = function () {
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
         ];
-<<<<<<< HEAD
     
-=======
-<<<<<<< HEAD
->>>>>>> 8e2264c2af816afddab37384a533958565b3f7e6
     //        foregroundMap2.loadData();
     var player = new Sprite(32, 32);
     player.x = 6 * 16 - 8;
@@ -294,7 +291,8 @@ window.onload = function () {
         // Used to help debug where the player is to help come
         // up with scene transition
         console.log(player);
-        if ((player._x == 56 || player._x == 72) && player._y == 128) {
+        
+        if ((player._x == 56 || player._x == 72) && player._y == 128 && currLvl == 0) {
           // alert("welcome to my home, dont touch that~");
           console.log("Hit the stairs. change the scene");
           paused = true;
@@ -338,7 +336,7 @@ window.onload = function () {
             arguments.callee.call(this);
           }
         }
-        if (paused) {
+        if (paused && currLvl == 0) {
           if (game.input.one) {
             document.getElementById('terminal').innerHTML += "<p>You are not worthy.</p>";
             alert('BALLZ');
@@ -349,11 +347,13 @@ window.onload = function () {
             map.loadData(map2DataBG, map2DataFG);
             foregroundMap.loadData(fore2Data);
             map.collisionData = map2.collisionData;
+            currLvl++;
             paused = false;
           }
         }
       }
     });
+    
     var stage = new Group();
     stage.addChild(map);
     stage.addChild(player);
@@ -383,6 +383,7 @@ window.onload = function () {
   }
   game.start();
 };
+
 $(document).ready(function () {
   $('#terminal').html('<p>> You are the next greatest programmer of the world and you are here to rescue the memory that was stolen by the evil king Segmentation Fault.</p>');
 });
