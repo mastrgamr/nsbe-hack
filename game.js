@@ -1,9 +1,12 @@
 enchant();
 
+var charSprite = 'images/sprites/toast.gif';
+var mapSprite = 'images/maps/map1.gif';
+
 window.onload = function() {
     var game = new Game(320, 320);
     game.fps = 15;
-    game.preload('images/maps/map1.gif', 'images/sprites/chara0.gif');
+    game.preload('images/maps/map1.gif', charSprite);
     game.onload = function() {
         var map = new Map(16, 16);
         map.image = game.assets['images/maps/map1.gif'];
@@ -142,7 +145,7 @@ window.onload = function() {
         player.x = 6 * 16 - 8;
         player.y = 10 * 16;
         var image = new Surface(96, 128);
-        image.draw(game.assets['images/sprites/chara0.gif'], 0, 0, 96, 128, 0, 0, 96, 128);
+        image.draw(game.assets[charSprite], 0, 0, 96, 128, 0, 0, 96, 128);
         player.image = image;
 
         player.isMoving = false;
