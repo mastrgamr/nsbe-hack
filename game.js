@@ -3,10 +3,10 @@ enchant();
 window.onload = function() {
     var game = new Game(320, 320);
     game.fps = 15;
-    game.preload('map1.gif', 'chara0.gif');
+    game.preload('images/maps/map1.gif', 'images/sprites/smiley.gif');
     game.onload = function() {
         var map = new Map(16, 16);
-        map.image = game.assets['map1.gif'];
+        map.image = game.assets['images/maps/map1.gif'];
         map.loadData([
             [322,322,322,322,322,322,224,225,225,225,225,225,167,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205],
             [322,322,322,322,322,322,322,322,322,322,322,322,224,225,225,225,225,225,167,205,205,205,205,205,205,205,205,205,205,205],
@@ -98,13 +98,13 @@ window.onload = function() {
             [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  0,  0,  0],
             [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  0,  0],
             [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  1,  1],
-            [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1],
+		[  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1],
             [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  1,  1,  1,  1,  1,  1,  1,  1],
             [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1]
         ];
 
         var foregroundMap = new Map(16, 16);
-        foregroundMap.image = game.assets['map1.gif'];
+        foregroundMap.image = game.assets['images/maps/map1.gif'];
         foregroundMap.loadData([
             [ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
             [ -1,461,462, -1,461,462, -1,461,462, -1,461,462, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
@@ -142,7 +142,7 @@ window.onload = function() {
         player.x = 6 * 16 - 8;
         player.y = 10 * 16;
         var image = new Surface(96, 128);
-        image.draw(game.assets['chara0.gif'], 0, 0, 96, 128, 0, 0, 96, 128);
+        image.draw(game.assets['images/sprites/smiley.gif'], 0, 0, 96, 128, 0, 0, 96, 128);
         player.image = image;
 
         player.isMoving = false;
