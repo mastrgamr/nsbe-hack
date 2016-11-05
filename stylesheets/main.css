@@ -14,13 +14,13 @@
 
 
 @font-face{
-	font-family: personal;
-	src: url(../fonts/personal-computer/PERSONAL.TTF);
+	font-family: mechanization;
+	src: url(../fonts/mechanization/Mechanization.ttf);
 }
 
 /* Custom Fonts end */
 html{
-	--dialog-bg: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqkj0511SWJPARxCpO-FfR5LS4VTpajMzfYxRm3zmFXM3A9zoU') center center;
+	--dialog-bg: url('http://www.wallpaperun.com/wp-content/uploads/2016/03/Brick-Wallpaper-Picture-J2P.jpg') center center;
 	height: 100%;
 }
 
@@ -31,16 +31,14 @@ body{
 }
 
 #enchant-stage{
-	border: 1px inset black;
 }
 
 #enchant-dialog{
 	background: var(--dialog-bg);
 	background-size: contain;
 	height: 100%;
-	width: 49%;
+	width: 50%;
 	float: right;
-	border: 1px blue solid;
 
 }
 
@@ -50,17 +48,16 @@ h1{
 
 }
 .dialog-wrapper{
-	margin-top: 40px;
+	margin-top: 50px;
 	width: 100%;
-	border: 10px green solid;
 
 }
 
 .dialog{
 	font-family: 'zig';
 	margin: 30px;
+	padding: 10px;
 	height: 300px;
-	border: 6px inset black;
 	background: black;
 	color: green;
 }
@@ -75,15 +72,22 @@ h1{
 
 }
 
+
 .hints{
-	font-family: 'personal';
 	display: flex;
+	background: rgba(0,0,0,0.6);
+	color: black;
+	height: 50px;
 	align-items: center;
 	justify-content: center;
-	margin: 50px;
-	border: 1px purple solid;
+	margin: 50px;	
+	text-align: center;
+	font-size: 25px;
+	font-family: 'Mechanization';
+	position: relative;
 }
 button{
+	font-family: 'zig';
 	margin: 10px;
 
 }
