@@ -298,11 +298,9 @@ window.onload = function() {
 
             if (this.isMoving) {
                 this.moveBy(this.vx, this.vy);
-<<<<<<< HEAD
  		if(player._x == 104 && player._y == 112){
 			alert("welcome to my home, dont touch that~");
 		}
-=======
 
                 // Used to help debug where the player is to help come
                 // up with scene transition
@@ -318,7 +316,6 @@ window.onload = function() {
 //                        map.collisionData = map2.collisionData;
             		}
 
->>>>>>> refs/remotes/origin/master
                 if (!(game.frame % 3)) {
                     this.walk++;
                     this.walk %= 3;
@@ -329,7 +326,6 @@ window.onload = function() {
                 }
             } else {
                 this.vx = this.vy = 0;
-<<<<<<< HEAD
                 if (game.input.left) {
                     this.direction = 1;
                     this.vx = -4;
@@ -343,7 +339,6 @@ window.onload = function() {
                     this.direction = 0;
                     this.vy = 4;
                 }
-=======
                 if (game.input.left && !paused) {
                     this.direction = 1;
                     this.vx = -4;
@@ -362,7 +357,6 @@ window.onload = function() {
                                     this.direction = 1;
                     this.vx = -4;
               }
->>>>>>> refs/remotes/origin/master
                 if (this.vx || this.vy) {
                     var x = this.x + (this.vx ? this.vx / Math.abs(this.vx) * 16 : 0) + 16;
                     var y = this.y + (this.vy ? this.vy / Math.abs(this.vy) * 16 : 0) + 16;
@@ -373,10 +367,6 @@ window.onload = function() {
                 }
             }
         });
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
         var stage = new Group();
         stage.addChild(map);
         stage.addChild(player);
