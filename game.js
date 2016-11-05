@@ -3,7 +3,7 @@ enchant();
 window.onload = function() {
     var game = new Game(320, 320);
     game.fps = 15;
-    game.preload('images/maps/map1.gif', 'images/sprites/smiley.gif');
+    game.preload('images/maps/map1.gif', 'images/sprites/chara0.gif');
     game.onload = function() {
         var map = new Map(16, 16);
         map.image = game.assets['images/maps/map1.gif'];
@@ -142,7 +142,7 @@ window.onload = function() {
         player.x = 6 * 16 - 8;
         player.y = 10 * 16;
         var image = new Surface(96, 128);
-        image.draw(game.assets['images/sprites/smiley.gif'], 0, 0, 96, 128, 0, 0, 96, 128);
+        image.draw(game.assets['images/sprites/chara0.gif'], 0, 0, 96, 128, 0, 0, 96, 128);
         player.image = image;
 
         player.isMoving = false;
@@ -150,9 +150,15 @@ window.onload = function() {
         player.walk = 1;
         player.addEventListener('enterframe', function() {
             this.frame = this.direction * 3 + this.walk;
+
+	// uncomment console.log(player);
+		
+			
             if (this.isMoving) {
                 this.moveBy(this.vx, this.vy);
- 
+ 		if(player._x == 104 && player._y == 112){
+			alert("welcome to my home, dont touch that~");
+		}
                 if (!(game.frame % 3)) {
                     this.walk++;
                     this.walk %= 3;
