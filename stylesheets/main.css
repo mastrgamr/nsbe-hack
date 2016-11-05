@@ -1,0 +1,63 @@
+
+html{
+	height: 100%;
+}
+
+
+body{
+height: 100%;
+	margin: 0;
+}
+
+h1{
+	text-align: center;
+}
+#enchant-stage{
+	border: 1px inset black;
+}
+
+#enchant-dialog{
+	height: 100%;
+	width: 49%;
+	float: right;
+	border: 1px blue solid;
+
+}
+
+
+.dialog-wrapper{
+	margin-top: 40px;
+	width: 100%;
+	border: 10px green solid;
+
+}
+
+.dialog{
+	margin: 30px;
+	height: 300px;
+	border: 6px inset black;
+	background: black;
+	color: green;
+}
+
+.dialog-options{
+	display: flex;
+	padding: 10px;
+	align-items: center;
+	justify-content: center;
+
+
+
+}
+
+.hints{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 50px;
+	border: 1px purple solid;
+}
+button{
+	margin: 10px;
+
+}
