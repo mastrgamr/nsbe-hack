@@ -365,10 +365,11 @@ window.onload = function () {
     enemy.isMoving = false;
     enemy.direction = 0;
     enemy.walk = 1;
-    enemy.addEventListener('enterframe', function () {
+    enemy.addEventListener('enterframe', function () {    
       this.frame = this.direction * 3 + this.walk;
-      if (this.isMoving) {
-        this.moveBy(this.vx, this.vy);
+	    /*
+      if (true) {
+        this.moveBy(-1, 1);
         // Used to help debug where the player is to help come
         // up with scene transition
                if (!(game.frame % 3)) {
@@ -381,7 +382,7 @@ window.onload = function () {
         }
       }
       else {
-        this.vx = this.vy = 0;
+        this.vx = this.vy = 1;
         if (game.input.left && !paused) {
           this.direction = 1;
           this.vx = -4;
@@ -407,7 +408,7 @@ window.onload = function () {
           }
         }
        
-      }
+      }*/
     });
    
     var stage = new Group();
