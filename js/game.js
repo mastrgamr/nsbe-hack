@@ -1,5 +1,4 @@
 var paused = false;
-
 var currLvl = 0;
 enchant();
 var charSprite = 'images/sprites/toast.gif';
@@ -273,7 +272,6 @@ window.onload = function () {
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
           , [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
         ];
-    
     //        foregroundMap2.loadData();
     var player = new Sprite(32, 32);
     player.x = 6 * 16 - 8;
@@ -291,7 +289,6 @@ window.onload = function () {
         // Used to help debug where the player is to help come
         // up with scene transition
         console.log(player);
-        
         if ((player._x == 56 || player._x == 72) && player._y == 128 && currLvl == 0) {
           // alert("welcome to my home, dont touch that~");
           console.log("Hit the stairs. change the scene");
@@ -338,22 +335,72 @@ window.onload = function () {
         }
         if (paused && currLvl == 0) {
           if (game.input.one) {
-            document.getElementById('terminal').innerHTML += "<p>You are not worthy.</p>";
-            alert('BALLZ');
-            firstDes();
+            document.getElementById('terminal').innerHTML += "<p>You are not worthy. Try  Again.</p>";
+            //            firstDes();
           }
           if (game.input.two) {
             document.getElementById('terminal').innerHTML = "<p>You chose 2. <br />You are quite skilled.</p>";
+            //            map.loadData(map2DataBG, map2DataFG);
+            //            foregroundMap.loadData(fore2Data);
+            //            map.collisionData = map2.collisionData;
+            currLvl++;
+            //            paused = false;
+            document.getElementById('terminal').innerHTML += "<p>-------------------------------------------</p>";
+            document.getElementById('terminal').innerHTML += "<p>if(passCode == 1234) {<br/>\
+                                  &emsp;openDoor();<br/>\
+                                  &emsp;print(\"So you cracked the code hah?\");<br/>\
+                                } else {<br/>\
+                                  &emsp;ringBuzzer();<br/>\
+                                  &emsp;print(\"Try Again.\");<br/>\
+                                }</p>";
+            document.getElementById('terminal').innerHTML += "<p>1 - Enter 42</p>";
+            document.getElementById('terminal').innerHTML += "<p>2 - Enter your birthday</p>";
+            document.getElementById('terminal').innerHTML += "<p>3 - Enter 1234</p>";
+          }
+        }
+        if (currLvl == 1) {
+          if (game.input.two) {
+            document.getElementById('terminal').innerHTML += "<p>try again</p>";
+          }
+          if (game.input.one) {
+            document.getElementById('terminal').innerHTML = "<p>42 is answer to everything</p>";
             map.loadData(map2DataBG, map2DataFG);
             foregroundMap.loadData(fore2Data);
             map.collisionData = map2.collisionData;
             currLvl++;
             paused = false;
+            secondDes();
+          }
+          if (game.input.three) {
+            document.getElementById('terminal').innerHTML = "<p>How did you figure out the password?</p>";
+            map.loadData(map2DataBG, map2DataFG);
+            foregroundMap.loadData(fore2Data);
+            map.collisionData = map2.collisionData;
+            currLvl++;
+            paused = false;
+            secondDes();
+          }
+        }
+        if (currLvl == 2) {
+          // TOP WALL 
+          if ((player._x == 120 || player._x == 136) && player._y == 32) {
+            document.getElementById('terminal').innerHTML = "<p>You Survive</p>";
+            
+            
+            
+            
+          }
+          // RIGHT WALL
+          if (player._x == 232 && player._y == 128) {
+            document.getElementById('terminal').innerHTML = "<p>You Dieded</p>";
+          }
+          // LEFT WALL
+          if (player._x == 24 && player._y == 128) {
+            document.getElementById('terminal').innerHTML = "<p>You Dieded Again</p>";
           }
         }
       }
     });
-    
     var stage = new Group();
     stage.addChild(map);
     stage.addChild(player);
@@ -384,6 +431,15 @@ window.onload = function () {
   game.start();
 };
 
+function secondDes() {
+  document.getElementById('terminal').innerHTML += "<p>------------------------------</p>";
+  document.getElement
+  document.getElementById('terminal').innerHTML += "<p>You will never get the memory bank.<br /> \
+            int memoryValue = 10000;<br />\
+            if(memoryValue < 0){<br />    room = right; <br /> \
+            } else if (memoryValue < 4096) { <br />    room = left; <br /> \
+            } else { <br />    room = straight; <br /> } </p>";
+}
 $(document).ready(function () {
   $('#terminal').html('<p>> You are the next greatest programmer of the world and you are here to rescue the memory that was stolen by the evil king Segmentation Fault.</p>');
 });
