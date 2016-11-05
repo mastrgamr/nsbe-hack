@@ -25,20 +25,15 @@ html{
 }
 
 
-body{	height: 100%;
+body{
+	height: 100%;
 	margin: 0;
 }
 
 #enchant-stage{
-	min-width: 320px;
-	min-height: 320px;
-	float: left;
-	width: 50%;
 }
 
-
 #enchant-dialog{
-	float: left;
 	background: var(--dialog-bg);
 	background-size: contain;
 	height: 100%;
